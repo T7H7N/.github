@@ -33,6 +33,21 @@ This is one way to use the projects together. The operator opens the next sessio
 
 **Feed experience back into the system.** In work-system-feedback, a fragment carries a result and its evidence into a weekly report. A session note captures friction in the worker's own words. In a sweep, the owner counts independent observations, decides whether a shared rule, tool, or procedure needs repair, and checks use and recurrence in a later window.
 
+## Where the design comes from
+
+These projects were built the way a wireless IoT service is built: start from the most constrained device and let its limits decide the layers above it. A sensor node sleeps, loses its link, and holds little state, so the service around it gains a relay, a store-and-forward queue, a collector, and a dashboard. Here the constrained device is the session, and much of the early work went into learning its characteristics, the way one studies a sensor before designing around it.
+
+| What a session cannot do | Layer added for it | Project |
+|---|---|---|
+| Wake itself when a time or file condition is met | A poller outside the session that delivers a notice | wakesub |
+| Keep its memory past the end of a conversation | A working note and a journal for each tenure, read by the successor | session-lineage |
+| Reach another session directly and reliably | An inbox folder on disk for each project, where a message is a file that waits for whoever owns the project by then | session-lineage |
+| Know the current date and time | A clock supplied on every turn | turn-clock-hooks |
+| Review its own work independently | A reviewer from another model family reading a fixed revision | blind-review-policy |
+| Notice that shared rules have drifted from practice | Notes from the field, counted in periodic sweeps | work-system-feedback |
+
+Most of the effort went into the links between sessions, more than into any single session. An address that points at one session stops working at the next handoff, because a different session answers for the project afterward. A folder that outlives its owner keeps working.
+
 ## Design principles
 
 - **Keep the evidence inspectable.** Working notes, inbox messages, subscription records, and review decisions can be inspected where the work happens.
