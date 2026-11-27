@@ -40,3 +40,7 @@ This is one way to use the projects together. The operator opens the next sessio
 - **Adopt one piece at a time.** A team can use the review policy on its own, start with a single clock hook, or carry a repair from a sweep into the next handoff.
 
 [Browse all T7H7N repositories](https://github.com/orgs/T7H7N/repositories)
+
+## Feedback
+
+Each repository has a Discussions tab for notes from people who tried it. For anything that spans the projects, use [organization discussions](https://github.com/T7H7N/.github/discussions).
