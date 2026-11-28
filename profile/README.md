@@ -1,12 +1,12 @@
 # <img src="./assets/banner.svg" alt="T7H7N: Tools and guides for work across sessions">
 
-Five standalone projects help people hand off unfinished work, deliver a notice to an idle session, check active turns, review changes, and repair shared ways of working.
+Six standalone projects help people hand off unfinished work, deliver a notice to an idle session, check active turns, review changes, repair shared ways of working, and monitor local routines.
 
-## How the five pieces fit together
+## How the six pieces fit together
 
 <picture>
   <source media="(max-width: 600px)" srcset="https://raw.githubusercontent.com/T7H7N/.github/main/profile/assets/loop-compact.svg">
-  <img src="./assets/loop.svg" alt="Hand off the project, watch for a condition, check the active turn, review the change, and use field notes to improve how the next session works.">
+  <img src="./assets/loop.svg" alt="Hand off the project, watch for a condition, check the active turn, review the change, and use field notes to improve how the next session works. Monhooks can run and monitor local routines underneath that cycle.">
 </picture>
 
 This is one way to use the projects together. The operator opens the next session, chooses which hooks to enable, and decides which findings or repairs to act on.
@@ -20,10 +20,11 @@ This is one way to use the projects together. The operator opens the next sessio
 | [turn-clock-hooks](https://github.com/T7H7N/turn-clock-hooks) | Python 3.9+, standard library | Put the clock in a turn and choose individual command and file checks. |
 | [blind-review-policy](https://github.com/T7H7N/blind-review-policy) | Markdown policy and templates | Review a fixed revision and decide what to do with each finding. |
 | [work-system-feedback](https://github.com/T7H7N/work-system-feedback) | Markdown guide and templates | Turn a verified result into a weekly note or investigate recurring friction. |
+| [monhooks](https://github.com/T7H7N/monhooks) | Python 3.9+, standard library | Run local routines and check expected jobs against inventory and success evidence. |
 
 ## Compatibility
 
-All five were written and used in Claude Code (the desktop app's Code tab and the CLI). The Python tools use only the standard library and work on plain files, and the two Markdown repositories apply to any agent tool. turn-clock-hooks and the wakesub hook example are specific to Claude Code. No repository contains hooks or adapters for Codex or other agent tools. Each README has a Compatibility section with the details.
+All six projects grew out of work in Claude Code. The Python tools use the standard library. The two Markdown guides apply to any agent tool. The turn-clock-hooks collection and the example session hooks in wakesub are specific to Claude Code. Monhooks runs independently as a Python desktop runner, with no agent-specific hooks or adapters. No repository contains hooks or adapters for Codex or other agent tools. Each project README lists its compatibility details.
 
 ## Component details
 
@@ -37,6 +38,8 @@ All five were written and used in Claude Code (the desktop app's Code tab and th
 
 **Feed experience back into the system.** In work-system-feedback, a fragment carries a result and its evidence into a weekly report. A session note captures friction in the worker's own words. In a sweep, the owner counts independent observations, decides whether a shared rule, tool, or procedure needs repair, and checks use and recurrence in a later window.
 
+**Monitor the underlying routines.** Monhooks runs due modules and records their results. A separate ledger check compares expected jobs with the inventory and success evidence. A file-condition poller such as wakesub can be wrapped as a module.
+
 ## Where the design comes from
 
 These projects were built the way a wireless IoT service is built: start from the most constrained device and let its limits decide the layers above it. A sensor node sleeps, loses its link, and holds little state, so the service around it gains a relay, a store-and-forward queue, a collector, and a dashboard. Here the constrained device is the session, and much of the early work went into learning its characteristics, the way one studies a sensor before designing around it.
@@ -49,6 +52,7 @@ These projects were built the way a wireless IoT service is built: start from th
 | Know the current date and time | A clock supplied on every turn | turn-clock-hooks |
 | Review its own work independently | A reviewer from another model family reading a fixed revision | blind-review-policy |
 | Notice that shared rules have drifted from practice | Notes from the field, counted in periodic sweeps | work-system-feedback |
+| Keep checking whether background routines still run successfully | A local runner and a ledger that checks inventory and success evidence | monhooks |
 
 Most of the effort went into the links between sessions, more than into any single session. An address that points at one session stops working at the next handoff, because a different session answers for the project afterward. A folder that outlives its owner keeps working.
 
