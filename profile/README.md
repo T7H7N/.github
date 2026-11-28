@@ -21,6 +21,10 @@ This is one way to use the projects together. The operator opens the next sessio
 | [blind-review-policy](https://github.com/T7H7N/blind-review-policy) | Markdown policy and templates | Review a fixed revision and decide what to do with each finding. |
 | [work-system-feedback](https://github.com/T7H7N/work-system-feedback) | Markdown guide and templates | Turn a verified result into a weekly note or investigate recurring friction. |
 
+## Compatibility
+
+All five were written and used in Claude Code (the desktop app's Code tab and the CLI). The Python tools use only the standard library and work on plain files, and the two Markdown repositories apply to any agent tool. turn-clock-hooks and the wakesub hook example are specific to Claude Code. No repository contains hooks or adapters for Codex or other agent tools. Each README has a Compatibility section with the details.
+
 ## Component details
 
 **Hand off a project.** In session-lineage, the project folder holds a working note, a journal for each owner's tenure, and an inbox. The outgoing owner leaves the next action and its pass condition in the journal. The operator commits the handoff and opens a fresh conversation. The successor reads the pack before taking the seat with `tools/seat_min.py`.
